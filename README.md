@@ -32,7 +32,13 @@ GitHub URL: [https://github.com/timmobrien/Social-Media-NOSQL-Backend](https://g
 Install the packages via NPM and then run the server.js file. 
 
 ## Usage <a name="usage"></a>
-To use the project, use an application like Insomnia to create requests to the url's outlined in the routes file.
+To use the project, use an application like Insomnia to create requests to the url's outlined in the routes file. See the demo video below for a walkthrough
+
+
+
+https://user-images.githubusercontent.com/20904553/191655216-a8c17bbc-5fa3-47ff-8ee5-938516562769.mov
+
+
 
 ## License <a name="license"></a>
 [MIT](https://choosealicense.com/licenses/mit)
