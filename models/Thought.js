@@ -1,5 +1,6 @@
 const { Schema, model , Types } = require('mongoose');
 
+// Schema for reactions
 const reactionSchema = new Schema ({
   body: {
     type: String,
@@ -15,7 +16,7 @@ const reactionSchema = new Schema ({
   timestamps: true
 })
 
-
+// Schema for thoughts
 const thoughtSchema = new Schema(
   {
     text: {
@@ -41,11 +42,13 @@ const thoughtSchema = new Schema(
   }
 );
 
+// Virtual to format the date
 thoughtSchema.virtual("date").get(function (){
   const date = new Date(this.createdAt)
   return `${date.toDateString()} at ${date.toLocaleTimeString()}`
 })
 
+// Virtual for total number of reactions
 thoughtSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
 })

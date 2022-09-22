@@ -20,12 +20,15 @@ const {
 
 const router = require("express").Router();
 
-router.route("/api/users")
-  .get(getAllUsers)
-  .post(newUser)
+// None of the routes have any other prefixes to simplify them
 
+router.route("/api/users").get(getAllUsers).post(newUser);
 
-router.route("/api/users/:id").get(findUserById).delete(deleteUser).put(updateUser);
+router
+  .route("/api/users/:id")
+  .get(findUserById)
+  .delete(deleteUser)
+  .put(updateUser);
 
 router
   .route("/api/:userId/friends/:friendId")

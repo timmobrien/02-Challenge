@@ -2,19 +2,20 @@ const Thought = require("../models/Thought");
 const User = require("../models/User");
 
 const thoughtController = {
+  // All thoughts
   getAllThoughts(req, res) {
     Thought.find({})
       .populate("reactions")
       .then((thoughts) => res.json(thoughts))
       .catch((err) => res.status(500).json(err));
   },
-
+  // Individual thought
   findThoughtById({ params }, res) {
     Thought.findById({ _id: params.id })
       .then((thought) => res.json(thought))
       .catch((err) => res.status(500).json(err));
   },
-
+  // Create a new thought
   newThought({ body }, res) {
     Thought.create(body)
       .then(({ _id }) => {
@@ -35,7 +36,7 @@ const thoughtController = {
       })
       .catch((err) => res.status(500).json(err));
   },
-
+  // Delete a previous thought
   deleteThought({ params }, res) {
     Thought.findByIdAndDelete({ _id: params.id })
       .then((thoughtData) => {
@@ -61,7 +62,7 @@ const thoughtController = {
       })
       .catch((err) => res.status(500).json(err));
   },
-
+  // Update a previous thought
   updateThought({ params, body }, res) {
     Thought.findByIdAndUpdate({ _id: params.id }, body, {
       new: true,
@@ -76,7 +77,7 @@ const thoughtController = {
       })
       .catch((err) => res.json(err));
   },
-
+  // Add comment to a thought
   addReaction({ params, body }, res) {
     Thought.findByIdAndUpdate(
       { _id: params.thoughtId },
@@ -94,7 +95,7 @@ const thoughtController = {
       })
       .catch((err) => res.json(err));
   },
-
+  // Remove the comment
   removeReaction({ params }, res) {
     Thought.findByIdAndUpdate(
       { _id: params.thoughtId },
